@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/c21c445645.js" crossorigin="anonymous"></script>
+    <script src="js/main.js" type="module" defer></script>
+  </head>
+  <body>
+    <div id="content">
+      <div id="toolbar" class="flex-column">
+
+        <!--Paintbrush-->
+        <div id="brush" class="option">
+          <div class="tool-settings flex-column hidden">
+            <label for="brush-colour">Colour:</label>
+            <input id="brush-colour" type="color" value="#000000">
+            <label for="brush-size">Size:</label>
+            <input id="brush-size" type="range" min="1" max="20">
+          </div>
+          <i class="fa-solid fa-paintbrush"></i>    
+        </div>
+
+        <!--Eraser-->
+        <div id="eraser" class="option">
+          <div class="tool-settings flex-column hidden">
+            <label for="brush-size">Size:</label>
+            <input id="brush-size" type="range" min="1" max="20">
+          </div>
+          <i class="fa-solid fa-eraser"></i>
+        </div>
+
+        <!--Fill tool-->
+        <div id="fill" class="option">
+          <div class="tool-settings flex-column hidden">
+            <label for="brush-colour">Colour:</label>
+            <input id="brush-colour" type="color" value="#000000">
+          </div>
+          <i class="fa-solid fa-fill-drip"></i>
+        </div>
+
+        <!--New File-->
+        <div id="newfile" class="option">
+          <i class="fa-solid fa-plus"></i>
+        </div>
+
+        <!--Save as Image-->
+        <div id="save" class="option">
+          <i class="fa-solid fa-floppy-disk"></i>
+        </div>
+
+        <!--Share on Social Media-->
+        <div id="share" class="option">
+          <i class="fa-solid fa-share"></i> 
+        </div>
+
+        <!--Dark/Light Mode-->
+        <div id="mode" class="option">
+          <i class="fa-solid fa-lightbulb"></i>
+        </div>
+
+      </div>
+      <div id="canvas-container">
+        <canvas></canvas>
+      </div>
+    </div>
+  </body>
+</html>

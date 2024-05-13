@@ -1,0 +1,83 @@
+:root
+{
+  --primary: rgb(224,223,223);
+  --secondary: rgb(165, 165, 165);
+  --font: rgb(0,0,0);
+}
+
+@media(prefers-color-scheme: dark) {
+  :root
+  {
+    --primary: rgb(35,30,34);
+    --secondary: rgb(43,38,39);
+    --font: rgb(255,255,255);
+  }
+}
+
+body, html
+{
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background-color: var(--primary);
+}
+
+#content
+{
+  display: grid;
+  grid-template-columns: 3.9rem calc(100vw - 3.9rem);
+  height: 100vh;
+}
+
+.flex-column
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#toolbar
+{
+  background-color: var(--secondary);
+  grid-column-start: 1;
+  text-align: center;
+}
+
+#canvas-container
+{
+  grid-column-start: 2;
+}
+
+canvas 
+{
+  width: 80%; 
+  height: 89vh;
+  margin: clamp(3vh, 50px, 5vh) 0 0 10%;
+}
+
+.option
+{
+  font-size: x-large;
+  color: var(--font);
+  margin: 3vh 0 3vh 0;
+  transition: font-size 100ms linear;
+}
+
+.option:hover
+{
+  cursor: pointer;
+  font-size: xx-large;
+}
+
+.hidden {display: none;}
+
+.tool-settings
+{
+  position: absolute;
+  left: 3.9rem;
+  padding: 10px;
+  height: fit-content;
+  width: 200px;
+  background-color: var(--secondary);
+  color: var(--font);
+}
