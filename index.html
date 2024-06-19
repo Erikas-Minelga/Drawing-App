@@ -2,69 +2,77 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <title>Drawing App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/c21c445645.js" crossorigin="anonymous"></script>
+    <script src="js/dialogueScript.js" defer></script>
+    <script src="js/brushSizeSetter.js" defer></script>
     <script src="js/main.js" type="module" defer></script>
   </head>
   <body>
+    <dialog id="splash">
+      <h1>Get Creative!</h1>
+      <p>Use the canvas to draw your next masterpiece</p>
+      <p>You can select the paint tools on the left side bar</p>
+      <p>Pick your colour and size of the tool on the right hand side</p>
+      <p>Once you're happy with your creation, be sure to save it, or share it on Social Media</p>
+      <form method="dialog">
+        <button autofocus>Got it!</button>
+      </form>
+    </dialog>
+
     <div id="content">
-      <div id="toolbar" class="flex-column">
+      <div id="toolbar" class="flex-column secondary-color">
 
         <!--Paintbrush-->
-        <div id="brush" class="option">
-          <div class="tool-settings flex-column hidden">
-            <label for="brush-colour">Colour:</label>
-            <input id="brush-colour" type="color" value="#000000">
-            <label for="brush-size">Size:</label>
-            <input id="brush-size" type="range" min="1" max="20">
-          </div>
-          <i class="fa-solid fa-paintbrush"></i>    
-        </div>
+        <label for="brush">
+          <input id="brush" type="radio" class="hidden paint-tool" name="tool" checked>
+          <i class="toolbar-button fa-solid fa-paintbrush transition"></i>
+        </label>
 
         <!--Eraser-->
-        <div id="eraser" class="option">
-          <div class="tool-settings flex-column hidden">
-            <label for="brush-size">Size:</label>
-            <input id="brush-size" type="range" min="1" max="20">
-          </div>
-          <i class="fa-solid fa-eraser"></i>
-        </div>
+        <label for="eraser">
+          <input id="eraser" type="radio" class="hidden paint-tool" name="tool">
+          <i class="toolbar-button fa-solid fa-eraser transition"></i>
+        </label>
 
-        <!--Fill tool-->
-        <div id="fill" class="option">
-          <div class="tool-settings flex-column hidden">
-            <label for="brush-colour">Colour:</label>
-            <input id="brush-colour" type="color" value="#000000">
-          </div>
-          <i class="fa-solid fa-fill-drip"></i>
+        <div>
+          <dialog id="context-menu" class="secondary-color">
+            <div class="flex-column">
+              <button id="close-context"><i class="fa-solid fa-xmark no-transition"></i></button>
+              <div class="flex-column">
+                <label for="colour">Colour</label>
+                <input id="colour" type="color" />
+              </div>
+              <div class="flex-column">
+                <label for="size">Size</label>
+                <input id="size" type="number" value="5" min="5" max="45"/>
+              </div>
+              <div>
+                <i id="size-down" class="fa-solid fa-chevron-left no-transition"></i>
+                <i id="size-up" class="fa-solid fa-chevron-right no-transition"></i>
+              </div>
+            </div>
+          </dialog>
+          <i id="settings" class="toolbar-button fa-solid fa-gear"></i>
         </div>
 
         <!--New File-->
-        <div id="newfile" class="option">
-          <i class="fa-solid fa-plus"></i>
-        </div>
+        <i id="newfile" class="toolbar-button fa-solid fa-plus canvas-option"></i>
 
         <!--Save as Image-->
-        <div id="save" class="option">
-          <i class="fa-solid fa-floppy-disk"></i>
-        </div>
+        <i id="save" class="toolbar-button fa-solid fa-floppy-disk canvas-option"></i>
 
         <!--Share on Social Media-->
-        <div id="share" class="option">
-          <i class="fa-solid fa-share"></i> 
-        </div>
-
-        <!--Dark/Light Mode-->
-        <div id="mode" class="option">
-          <i class="fa-solid fa-lightbulb"></i>
-        </div>
+        <i id="share" class="toolbar-button fa-solid fa-share canvas-option"></i> 
 
       </div>
       <div id="canvas-container">
-        <canvas></canvas>
+        <canvas>Your browser does not support canvas element</canvas>
       </div>
     </div>
   </body>

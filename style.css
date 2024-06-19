@@ -1,32 +1,12 @@
 :root
 {
-  --primary: rgb(224,223,223);
-  --secondary: rgb(165, 165, 165);
-  --font: rgb(0,0,0);
+  --primary: rgb(35,30,34);
+  --secondary: rgb(43,38,39);
+  --font: rgb(255,255,255);
 }
 
-@media(prefers-color-scheme: dark) {
-  :root
-  {
-    --primary: rgb(35,30,34);
-    --secondary: rgb(43,38,39);
-    --font: rgb(255,255,255);
-  }
-}
-
-body, html
-{
-  padding: 0;
-  margin: 0;
-  border: 0;
-  background-color: var(--primary);
-}
-
-#content
-{
-  display: grid;
-  grid-template-columns: 3.9rem calc(100vw - 3.9rem);
-  height: 100vh;
+@media screen and (max-width: 600px) {
+  dialog {width: 87%;}
 }
 
 .flex-column
@@ -36,48 +16,127 @@ body, html
   justify-content: center;
 }
 
+.hidden {display: none;}
+
+.secondary-color {background-color: var(--secondary);}
+
+i{ font-size: x-large; }
+
+i:hover { cursor: pointer; }
+
+.toolbar-button:hover, input[type="radio"]:checked + .toolbar-button { font-size: xx-large;}
+
+dialog{ border: 0; }
+
+body, html
+{
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background-color: var(--primary);
+  overflow: hidden;
+  font-family: "Kanit", sans-serif;
+}
+
+body, html, #context-menu, #context-menu > * {  color: var(--font);} 
+
+#splash
+{
+  background-image: url("img/dialog_background.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  text-align: center;
+  border: 0;
+}
+
+dialog::backdrop
+{
+  background-color: black;
+  opacity: 0.5;
+}
+
+#content
+{
+  display: grid;
+  grid-template-columns: 3.9rem calc(100vw - 3.9rem);
+  height: 100vh;
+}
+
+/*TOOLBAR*/
+
 #toolbar
 {
-  background-color: var(--secondary);
   grid-column-start: 1;
   text-align: center;
 }
 
+.toolbar-button
+{
+  margin: 3vh 0 3vh 0;
+  transition: all 50ms linear;
+}
+
+#context-menu
+{
+  color: var(--font);
+  margin-left: -100px;
+  width: 150px;
+  height: fit-content;
+  padding: 10px;
+  transition: all 300ms ease-in-out;
+  opacity: 0;
+}
+
+#context-menu > div
+{
+  row-gap: 15px;
+}
+
+#context-menu > div > div
+{
+  row-gap: 10px;
+}
+
+#close-context
+{
+  background: none;
+  color: var(--font);
+  border: 0;
+  position: absolute;
+  right: 5px;
+}
+
+input[type="color"], input[type="number"]
+{
+  position: relative;
+  left: 30%;
+  margin: 1px 0 1px 0;
+  border: 0;
+  padding: 0;
+  width: 50px;
+  background-color: var(--secondary);
+}
+
+input[type="number"] 
+{
+  font-size: x-large;
+  text-align: center;
+  appearance: textfield;
+  height: fit-content;
+  color: var(--font);
+}
+
+input[type="color"] 
+{
+  background: none;
+  height: 50px;
+}
+
+/*CANVAS*/
+
 #canvas-container
 {
   grid-column-start: 2;
-}
-
-canvas 
-{
-  width: 80%; 
-  height: 89vh;
-  margin: clamp(3vh, 50px, 5vh) 0 0 10%;
-}
-
-.option
-{
-  font-size: x-large;
-  color: var(--font);
-  margin: 3vh 0 3vh 0;
-  transition: font-size 100ms linear;
-}
-
-.option:hover
-{
-  cursor: pointer;
-  font-size: xx-large;
-}
-
-.hidden {display: none;}
-
-.tool-settings
-{
-  position: absolute;
-  left: 3.9rem;
-  padding: 10px;
-  height: fit-content;
-  width: 200px;
-  background-color: var(--secondary);
-  color: var(--font);
+  width: 100%; 
+  height: 100%;
 }
