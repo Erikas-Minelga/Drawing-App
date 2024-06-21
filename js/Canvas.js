@@ -69,9 +69,9 @@ export default class Canvas
         this.context.fillRect(0,0,this.canvas.width,this.canvas.height);
     }
 
-    save()
+    getDataUrl()
     {
-        window.location.href = this.canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+        return this.canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
     }
 
     resize()

@@ -1,3 +1,5 @@
+@import "https://unpkg.com/open-props";
+
 :root
 {
   --primary: rgb(35,30,34);
@@ -40,20 +42,42 @@ body, html
 
 body, html, #context-menu, #context-menu > * {  color: var(--font);} 
 
-#splash
+.modal
 {
+  position: relative;
   background-image: url("img/dialog_background.jpg");
+  animation-timing-function: var(--ease-squish-3);
   background-size: cover;
   background-repeat: no-repeat;
   text-align: center;
   border: 0;
 }
 
-dialog::backdrop
+.modal:not([open])
 {
-  background-color: black;
-  opacity: 0.5;
+  animation: var(--animation-scale-down) forwards;
 }
+
+.modal[open]
+{
+  animation: var(--animation-slide-in-up) forwards;
+}
+
+.modal::backdrop
+{
+  opacity: 0.5;
+  background-color: black;
+}
+
+h3 { margin: 0;}
+
+#save-dialog > div > div { margin: 15px 0 15px 0;}
+
+#download {margin-bottom: 15px;}
+
+#err-message { font-style: italic; margin: 0; } 
+
+.error{ border: 2px; border-color: red;}
 
 #content
 {

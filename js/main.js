@@ -78,10 +78,7 @@ function handleCanvasOptions(event)
             canvas.reset();
             break;
         case "save":
-            canvas.save();
-            break;
-        case "share":
-            console.log("Sharing");
+            openSaveDialog(canvas.getDataUrl());
             break;
         default:
             break;

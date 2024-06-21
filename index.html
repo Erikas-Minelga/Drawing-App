@@ -14,15 +14,33 @@
     <script src="js/main.js" type="module" defer></script>
   </head>
   <body>
-    <dialog id="splash">
+    <dialog id="splash" class="modal">
       <h1>Get Creative!</h1>
       <p>Use the canvas to draw your next masterpiece</p>
       <p>You can select the paint tools on the left side bar</p>
       <p>Pick your colour and size of the tool on the right hand side</p>
       <p>Once you're happy with your creation, be sure to save it, or share it on Social Media</p>
-      <form method="dialog">
-        <button autofocus>Got it!</button>
-      </form>
+      <button autofocus onclick="closeSplash()">Got it!</button>
+    </dialog>
+
+    <dialog id="save-dialog" class="modal">
+      <div class="flex-column">
+        <h1>Download your art!</h1>
+        <label for="filename"><h3>Give it a name:</h3></label>
+        <input id="filename" type="text" placeholder="name of my drawing">
+        <p id="err-message" class="hidden">Please enter the name of your drawing</p>
+        <div>
+          <h3>Select the file type</h3>
+          <label for="jpg">.jpeg</label>
+          <input id="jpg" type="radio" name="filetype" checked>
+          <label for="jpg">.png</label>
+          <input id="png" type="radio" name="filetype">
+          <label for="jpg">.gif</label>
+          <input id="gif" type="radio" name="filetype">
+        </div>
+        <button id="download">Download now</button>
+        <button onclick="closeSaveDialog()">Close</button>
+      </div>
     </dialog>
 
     <div id="content">
@@ -66,9 +84,6 @@
 
         <!--Save as Image-->
         <i id="save" class="toolbar-button fa-solid fa-floppy-disk canvas-option"></i>
-
-        <!--Share on Social Media-->
-        <i id="share" class="toolbar-button fa-solid fa-share canvas-option"></i> 
 
       </div>
       <div id="canvas-container">
